@@ -1,0 +1,2 @@
+docker build -t neur602 .
+docker run -v ${PWD}:/home neur602 --data /home/1-longitudinal-minimal-data-set-V2.csv

@@ -1,7 +1,12 @@
 import pandas as pd
 from statsmodels.formula.api import MNLogit, Logit
+import argparse
 
-hie = pd.read_csv('1-longitudinal-minimal-data-set-V2.csv', na_values='nd')
+parser = argparse.ArgumentParser(description='pie analysis')
+parser.add_argument('--data', '-d', help='Data file path')
+args = parser.parse_args()
+
+hie = pd.read_csv(args.data, na_values='nd')
 outcome_labels = {'0': 'healthy', '1': 'moderate', '2e': 'severe', '3': 'death'}
 hie['outcome'] = hie['outcome'].map(outcome_labels, na_action='ignore')
 binarized_labels = {'healthy': 1, 'moderate': 1, 'severe': 0, 'death': 0}
